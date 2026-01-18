@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+    background-color: #999c9a;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    margin-left: 14.13%;
+}
+
+header nav {
+    margin-top: 20px;
+}
+
+header nav a {
+    color: #333;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgb(194, 189, 199);
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+    color :#7b23f7;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    min-height: 75vh;
+}
+
+/* Sidebar */
+aside {
+    height: 740px;
+    width: 450px;
+    margin-top: -135px;
+    margin-left:-110px;
+    background-color: #e0dfe6;
+    padding: 40px;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.views-count {
+    font-size: 40px;
+    font-weight: bold;
+    color: #551ba6;
+}
+
+/* Footer */
+footer {
+    background-color: #999c9a;
+    color: black;
+    text-align: center;
+    padding: 15px;
+    margin-left: 14.13%;
+    margin-top: -54px;
+}
+
+
+.sidebar {
+    width: 250px;
+    background: #e9e9ee;
+    padding: 15px;
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 30px;
+    color : rgb(7, 7, 117);
+}
+
+.dropdown-container {
+    display: none; /* IMPORTANT */
+    padding-left: 5px;
+}
+
+.dropdown-container a {
+    display: block;
+    padding: 6px 0;
+    color: black;
+    text-decoration: none;
+    margin-left : 30px;
+    margin-top : -10px;
+    padding : 8px;
+}
+
+.dropdown-container a:hover {
+    text-decoration: underline;
+}
+
+.arrow {
+    float: right;
+}
+
+
+h5{
+    margin-left:35px;    
+}
