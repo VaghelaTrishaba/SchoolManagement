@@ -20,6 +20,10 @@ class Classes extends Model
     {
         return $this->hasMany(Subject::class);
     }
+    public function  exam()
+    {
+        return $this->hasMany(Exam::class);
+    }
     public function teacher()
     {
         return $this->hasMany(Teacher::class);

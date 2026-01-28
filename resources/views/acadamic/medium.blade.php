@@ -151,11 +151,9 @@
                                                         'Content-type' : 'application/json'
                                                         }
                                                 }).then(response => response.json()).then(data => {console.log(data);window.location.href="/medium";});
-
                                         }
                                 </script>
                         </div>
-
                 </body>
         </html>
 @endsection

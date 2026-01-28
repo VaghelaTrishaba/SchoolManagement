@@ -38,6 +38,7 @@
                         .then(data => {
                                 const classes = data.Messsage; 
                                 const selectElement = document.querySelector('#class_id');
+                                
 
                                 if (classes) {
                                 classes.forEach(post => {
@@ -77,6 +78,6 @@
                                         body : formData,  //for send data
                                         headers : {'Authorization' :`Bearer ${token}` }
                                 }).then(response => response.json()).then(data => {window.location.href="/assginclass";});
-                                }  
+                }  
         </script>
 @endsection

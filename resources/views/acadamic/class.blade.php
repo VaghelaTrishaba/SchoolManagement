@@ -87,7 +87,7 @@
                                          
                         function loadData()
                         {
-                         const token = localStorage.getItem('api_token');
+                        const token = localStorage.getItem('api_token');
                                 fetch('api/class',
                                 {
                                         method : 'GET',
@@ -182,7 +182,6 @@
                                         'Content-type' : 'application/json'
                                         }
                                 }).then(response => response.json()).then(data => {console.log(data);window.location.href="/class";});
-
                         }
 
                         </script>

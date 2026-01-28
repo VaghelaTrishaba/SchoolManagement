@@ -62,5 +62,48 @@ use Illuminate\Http\Request;
             return view('acadamic/subject');
         }
 
+        public function showAddTeacher()
+        {
+            return view('teacher/addTeacher');
+        }
+
+        public function showTeacherDetails()
+        {
+            return view('teacher/teacherDetails');
+        }
+
+        public function showStudentAdmission()
+        {
+            return view('student/studentAdmission');
+        }
+
+        public function showStudentDetails()
+        {
+            return view('student/studentDetails');
+        }
+
+        public function showRolPermission()
+        {
+            return view('staffManagment/role&permission');
+        }
+
+        public function showStaff()
+        {
+            return view('staffManagment/staff');
+        }
+
+        public function showAssgin()
+        {
+            return view('assgin/assgin');
+        }
+
+        public function showAllAssgin(){
+            return view('assgin/allassgin');
+        }
+
+        public function showExam()
+        {
+            return view('exam/onlineexam');
+        }
     }
 ?>
