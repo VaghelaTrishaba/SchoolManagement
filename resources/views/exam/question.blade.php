@@ -8,26 +8,38 @@
 @section('content')
 <html>
     <body>
-        <h1 style="margin-left: -60%;font-size: 30px;"> <b>Manage Exam</b> </h1>
+        <h1 style="margin-left: -60%;font-size: 30px;"> <b>Manage Question</b> </h1>
 
-        <div  style="background-color:rgb(242, 241, 240);width:50%;height:85%;">
+        <div  style="background-color:rgb(242, 241, 240);width:50%;height:85%;margin-left:-3%;">
             <form id="yes">
-                <br>
-                <select id="class_id" class="form-control" style="width:40%;margin-left:30%;margin-top:1%;"><option value="">Select a Class</option></select></br>
-                <h5 style="margin-left:-69%;">Subject:</h5>
-                <input type="text" placeholder="Subject" id="subject" style="margin-left:-53%;width:30%;height:35px;border-color:rgb(155, 155, 208)"><br><br>
-                <h5 style="margin-left:-71%;">Marks:</h5>
-                <input type="number" placeholder="Mark" id="mark" style="margin-left:-53%;width:30%;height:35px;border-color:rgb(155, 155, 208)"><br><br>
-                <h5 style="margin-left:-69%;">Duration:</h5>
-                <input type="text" placeholder="Duration" id="duration" style="margin-left:-53%;width:30%;height:35px;border-color:rgb(155, 155, 208)"><br><br>
-                <h5 style="margin-left:-64%;">Exam Date:</h5>
-                <input type="date" id="date" style="margin-left:-53%;width:30%;height:35px;border-color:rgb(155, 155, 208)"><br></br>
-                <button style="background-color: rgb(5, 72, 113);color:rgb(252, 247, 247);margin-top:-12%;margin-left:50%;width:80px;height:10%;border-radius:5px;">Submit</button>
-            </form>       
+
+                <select id="class_id" class="form-control">
+                    <option value="">Select Class</option>
+                </select>
+
+                <input type="text" id="subject" class="form-control mt-2" placeholder="Subject">
+
+                <textarea id="question" class="form-control mt-2" placeholder="Enter Question"></textarea>
+
+                <input type="text" id="option_a" class="form-control mt-2" placeholder="Option A">
+                <input type="text" id="option_b" class="form-control mt-2" placeholder="Option B">
+                <input type="text" id="option_c" class="form-control mt-2" placeholder="Option C">
+                <input type="text" id="option_d" class="form-control mt-2" placeholder="Option D">
+
+                <select id="correct_option" class="form-control mt-2">
+                    <option value="">Correct Answer</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+
+                <button class="btn btn-primary mt-3">Submit</button>
+            </form>    
         </div>
 
-        <div style="background-color:rgb(242, 241, 240);width:50%;height:85%;margin-left:60%;margin-top:-450px;">
-            <h4><b>Exam List</b></h4>
+        <div style="background-color:rgb(242, 241, 240);width:60%;height:85%;margin-left:49%;margin-top:-450px;">
+            <h4><b>Question  List</b></h4>
         <div id="test"></div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
@@ -63,27 +75,33 @@
                         const token = localStorage.getItem('api_token');
                         const class_id = document.querySelector('#class_id').value;
                         const subject = document.querySelector('#subject').value;    
-                        const mark = document.querySelector('#mark').value;
-                        const duration = document.querySelector('#duration').value; 
-                        const date = document.querySelector('#date').value;
+                        const question = document.querySelector('#question').value;
+                        const option_a = document.querySelector('#option_a').value; 
+                        const option_b = document.querySelector('#option_b').value; 
+                        const option_c = document.querySelector('#option_c').value; 
+                        const option_d = document.querySelector('#option_d').value;
+                        const correct_option = document.querySelector('#correct_option').value;  
 
                         var formData = new FormData();         //form ma value add krava,make object of formData class
                         formData.append('class_id',class_id);
                         formData.append('subject',subject);
-                        formData.append('marks',mark);             //add all value
-                        formData.append('duration',duration);
-                        formData.append('date',date);
-                            let r = await fetch('api/exam',{                //send data into server 
+                        formData.append('question',question);             //add all value
+                        formData.append('option_a',option_a);
+                        formData.append('option_b',option_b);
+                        formData.append('option_c',option_c);
+                        formData.append('option_d',option_d);
+                        formData.append('correct_option',correct_option);
+                            let r = await fetch('api/question',{                //send data into server 
                                 method :'POST',
+                                headers : {'Authorization' :`Bearer ${token}` , 'Accept':`application/json` },
                                 body : formData,  //for send data
-                                headers : {'Authorization' :`Bearer ${token}` }
-                            }).then(response => response.json()).then(data => {window.location.href="/exam";});
+                            }).then(response => response.json()).then(data => {window.location.href="/question";});
             } 
 
             function loadData() {
                 const token = localStorage.getItem('api_token');
 
-                fetch('api/exam', {
+                fetch('api/question', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${token}` }
                 })
@@ -94,14 +112,16 @@
 
                     let tabledata = `
                     <br>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped" style="margin-top:-4%;">
                         <tr>
-                            <th>ID</th>
                             <th>Class</th>
                             <th>Subject</th>
-                            <th>Marks</th>
-                            <th>Duration</th>
-                            <th>Date</th>
+                            <th>question</th>
+                            <th>option A</th>
+                            <th>option B</th>
+                            <th>option C</th>
+                            <th>option D</th>
+                            <th>Answer</th>
                         </tr>
                     `;
 
@@ -109,12 +129,14 @@
                         exams.forEach(exam => {
                             tabledata += `
                             <tr>
-                                <td>${exam.id}</td>
                                 <td>${exam.class.name} (${exam.class.section})</td>
                                 <td>${exam.subject}</td>
-                                <td>${exam.marks}</td>
-                                <td>${exam.duration}</td>
-                                <td>${exam.date.split('-').reverse().join('-') ?? '-'}</td>
+                                <td>${exam.question}</td>
+                                <td>${exam.option_a}</td>
+                                <td>${exam.option_b}</td>
+                                <td>${exam.option_c}</td>
+                                <td>${exam.option_d}</td>
+                                <td>${exam.correct_option}</td>
                             </tr>
                             `;
                         });

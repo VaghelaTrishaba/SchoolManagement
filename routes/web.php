@@ -1,14 +1,21 @@
 <?php
 
 use App\Http\Controllers\API\AllStudController;
+use App\Http\Controllers\MyFeesController;
 use App\Http\Controllers\NewController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PayFeesController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\StudentFeesController;
+use App\Http\Controllers\StudentMarkController;
 use App\Http\Controllers\SubController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageController;
 use App\Http\Controllers\LoginStudentController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\MyAssignmentController;
+use App\Http\Controllers\StudentExamController;
+use App\Http\Controllers\StudentQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +63,12 @@ Route::controller(pageController::class)->group(
         Route::get('/assginment','showAssgin');
         Route::get('/allassginment','showAllAssgin');
         Route::get('/exam','showExam');
+        Route::get('/question','showQuestion');
+        Route::get('/mark','showMark');
+        Route::get('/fees','showFees');
+        Route::get('/feesDetails','showFeesDetails');
+        Route::get('/payment','showPayment');
+        Route::get('/notification','showNotification');
     }
 );
 
@@ -68,3 +81,12 @@ Route::get('/student/assignment', [AssignmentController::class, 'create'])->name
 Route::post('/student/assignment-submit', [AssignmentController::class, 'store'])->name('student.store');
 Route::get('/student/my-assignments', [MyAssignmentController::class, 'myAssignments'])->name('student.myassignment');
 Route::get('/student/new',[NewController::class,'new'])->name('student.new');
+Route::get('/student/exam',[StudentExamController::class,'exam'])->name('student.exam');
+Route::get('/student/question',[StudentQuestionController::class,'question'])->name('student.question');
+Route::post('/student/submit-answers', [StudentQuestionController::class, 'submitAnswers'])->name('student.answer');
+Route::get('/student/mark',[StudentMarkController::class,'mark'])->name('student.mark');
+Route::get('/student/fees',[StudentFeesController::class,'fees'])->name('student.fees');
+Route::post('/student/payfees-submit',[PayFeesController::class,'store'])->name('student.paystore');
+Route::get('/student/payfees',[PayFeesController::class,'create'])->name('student.pay');
+Route::get('/student/payedfees',[MyFeesController::class,'myfees'])->name('student.myfees');
+Route::get('/student/notification',[NotificationController::class,'notification'])->name('student.notification');

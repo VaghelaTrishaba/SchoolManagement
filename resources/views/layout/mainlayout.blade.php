@@ -71,6 +71,26 @@
             </button>
             <div class="dropdown-container">
                 <a href="exam">Online Exam</a>
+                <a href="question">Question</a>
+                <a href="mark">Marks</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-20px;">
+                    Fees
+                    <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="fees">Manage Fees</a> 
+                <a href="feesDetails">Fees Details</a>
+                <a href="payment">Payment</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-25px;">
+                    Notifiaction
+                    <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="notification">Custom Notifiaction</a>
             </div>
         </aside>
 

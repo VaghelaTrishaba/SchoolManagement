@@ -23,4 +23,9 @@ class Admission extends Model
             'fatherImage',
     ];
 
+    public function mark()
+    {
+        return $this->hasMany(Mark::class);
+    }
+
 }

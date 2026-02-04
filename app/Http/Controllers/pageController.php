@@ -105,5 +105,35 @@ use Illuminate\Http\Request;
         {
             return view('exam/onlineexam');
         }
+
+        public function showQuestion()
+        {
+            return view('exam/question');
+        }
+
+        public function showMark()
+        {
+            return view('exam/marks');
+        }
+
+        public function showFees()
+        {
+            return view('fees/fees');
+        }
+
+        public function showFeesDetails()
+        {
+            return view('fees/feesDetails');
+        }
+
+        public function showPayment()
+        {
+            return view('fees/paymentDetails');
+        }
+
+        public function showNotification()
+        {
+            return view('notification/customNotification');
+        }
     }
 ?>

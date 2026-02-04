@@ -12,10 +12,10 @@
         <tr><th>GR Number</th><td>{{ $student->grNumber }}</td></tr>
         <tr><th>First Name</th><td>{{ $student->firstName }}</td></tr>
         <tr><th>Second Name</th><td>{{ $student->secondName }}</td></tr>
-        <tr><th>Birth Date</th><td>{{ $student->birth }}</td></tr>
+        <tr><th>Birth Date</th><td>{{ \Carbon\Carbon::parse($student->birth)->format('d-m-Y') }}</td></tr>
         <tr><th>Category</th><td>{{ $student->category }}</td></tr>
         <tr><th>Mobile</th><td>{{ $student->fatherMobile }}</td></tr>
-        <tr><th>Admission Date</th><td>{{$student->admissionDate}}</td></tr>
+        <tr><th>Admission Date</th><td>{{\Carbon\Carbon::parse($student->admissionDate)->format('d-m-Y')}}</td></tr>
     </table>
 </div>
 @endsection

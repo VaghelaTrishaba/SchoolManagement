@@ -17,7 +17,7 @@
                 <a href="{{ route('student.subject') }}">Your Subject</a>
             </div>
 
-             <button class="dropdown-btn" style="margin-top:-10%;">
+             <button class="dropdown-btn" style="margin-top:-7%;">
                 Assignment
                 <span class="arrow">&lt;</span>
             </button>
@@ -26,12 +26,40 @@
                 <a href="{{ route('student.myassignment') }}">My Assignments</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-10%;">
-                Notification
+            <button class="dropdown-btn" style="margin-top:-5%;">
+                New Assignments 
                 <span class="arrow">&lt;</span>
             </button>
             <div class="dropdown-container">
                 <a href="{{ route('student.new') }}">New Assignment</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-3%;">
+                Exam
+                <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="{{ route('student.exam') }}">Exam Detail</a>
+                <a href="{{ route('student.question') }}">Question Paper</a>
+                <a href="{{ route('student.mark') }}">Marks</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-5%;">
+                Fees
+                <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="{{ route('student.fees') }}">Fees Details</a>
+                <a href="{{ route('student.pay') }}">Fees Payment</a>
+                <a href="{{ route('student.myfees') }}">Payed Fees</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-4%">
+                Notification
+                <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="{{ route('student.notification') }}">Custom Notification</a>
             </div>
         </aside>
 

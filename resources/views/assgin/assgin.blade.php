@@ -19,9 +19,9 @@
         </style>
         <body>
             <h1 style="margin-left: -60%;font-size: 30px;"> <b>Manage Assginment</b> </h1>
-            <div style="background-color:rgb(242, 241, 240);width:100%;height:85%;margin-left:5%;margin-top:10px;">
+            <div style="background-color:rgb(242, 241, 240);width:80%;height:85%;margin-left:5%;margin-top:10px;">
                 <form id="yes">
-                    <p style="margin-left:-3%;"><b>Apload Assginment</b></p>
+                    <p style="margin-left:-3%;"><b><u>Apload Assginment</u></b></p>
                     <h4>Subject :</h4>
                     <input type="text" id="subject"></br></br>
                     <h4>File :</h4>

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Exam;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class ExamController extends Controller
+class CustomNotificationController extends Controller
 {
     public function index() //fetch data from post
     {
-        $data = Exam::with('class')->get();
+        $data = Notification::all();
         return  response()->json(["Message"=>$data]);
     }
     public function store(Request $request) //add data in post
@@ -19,10 +19,8 @@ class ExamController extends Controller
        $ValidateUser = Validator::make(
             $request->all(),
      [
-                'class_id' => 'required|exists:classes,id',
-                'subject'=>'required',
-                'marks'=>'required',
-                'duration'=>'required',
+                'title'=>'required',
+                'message'=>'required',
                 'date'=>'required',
             ]
        );
@@ -37,11 +35,9 @@ class ExamController extends Controller
        }
 
 
-        $data = Exam::create([
-           'class_id'=>$request->class_id,
-           'subject'=>$request->subject,
-           'marks'=>$request->marks,
-           'duration'=>$request->duration,
+        $data = Notification::create([
+           'title'=>$request->title,
+           'message'=>$request->message,
            'date'=>$request->date,
         ]);
 
@@ -50,15 +46,15 @@ class ExamController extends Controller
    
     public function show(string $id)  // fetch one record
     {
-        $data['exam']=Exam::select('class_id','id','subject','marks','duration','date')->where(['id' => $id])->first();
+        $data['notification']=Notification::select('id','title','message','date')->where(['id' => $id])->first();
         return response()->json(['data'=>$data]);
     }
 
      public function destroy(string $id)
     {
-        $exam = Exam::find($id);
+        $notification = Notification::find($id);
 
-        $exam->delete();
+        $notification->delete();
 
         return response()->json([
             'status' => true,

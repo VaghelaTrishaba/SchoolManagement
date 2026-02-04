@@ -20,9 +20,17 @@ class Classes extends Model
     {
         return $this->hasMany(Subject::class);
     }
+    public function fees()
+    {
+        return $this->hasMany(Fees::class);
+    }
     public function  exam()
     {
         return $this->hasMany(Exam::class);
+    }
+    public function question()
+    {
+        return $this->hasMany(Question::class);
     }
     public function teacher()
     {

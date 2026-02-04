@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Exam;
+use App\Models\Question;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class ExamController extends Controller
+class QuestionController extends Controller
 {
     public function index() //fetch data from post
     {
-        $data = Exam::with('class')->get();
+        $data = Question::with('class')->get();
         return  response()->json(["Message"=>$data]);
     }
     public function store(Request $request) //add data in post
     {
        $ValidateUser = Validator::make(
-            $request->all(),
+        $request->all(),
      [
                 'class_id' => 'required|exists:classes,id',
                 'subject'=>'required',
-                'marks'=>'required',
-                'duration'=>'required',
-                'date'=>'required',
+                'question'=>'required',
+                'option_a'=>'required',
+                'option_b'=>'required',
+                'option_c'=>'required',
+                'option_d'=>'required',
+                'correct_option'=>'required',
             ]
        );
 
@@ -37,12 +40,15 @@ class ExamController extends Controller
        }
 
 
-        $data = Exam::create([
+        $data = Question::create([
            'class_id'=>$request->class_id,
            'subject'=>$request->subject,
-           'marks'=>$request->marks,
-           'duration'=>$request->duration,
-           'date'=>$request->date,
+           'question'=>$request->question,
+           'option_a'=>$request->option_a,
+           'option_b'=>$request->option_b,
+           'option_c'=>$request->option_c,
+           'option_d'=>$request->option_d,
+           'correct_option'=>$request->correct_option,
         ]);
 
        return response()->json(['Data'=>$data,'message'=> 'Data Add Successfully']);
@@ -50,15 +56,15 @@ class ExamController extends Controller
    
     public function show(string $id)  // fetch one record
     {
-        $data['exam']=Exam::select('class_id','id','subject','marks','duration','date')->where(['id' => $id])->first();
+        $data['question']=Question::select('class_id','id','subject','question','option_a','option_b','option_c','option_d','correct_option')->where(['id' => $id])->first();
         return response()->json(['data'=>$data]);
     }
 
      public function destroy(string $id)
     {
-        $exam = Exam::find($id);
+        $post = Question::find($id);
 
-        $exam->delete();
+        $post->delete();
 
         return response()->json([
             'status' => true,
