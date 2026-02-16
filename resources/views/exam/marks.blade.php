@@ -40,7 +40,6 @@
                 </tr>`;
             return;
         }
-
         result.data.forEach(row => {
             tbody.innerHTML += `
                 <tr>

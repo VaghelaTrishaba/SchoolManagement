@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\API\AllStudController;
 use App\Http\Controllers\MyFeesController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PayFeesController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\StudentFeesController;
 use App\Http\Controllers\StudentMarkController;
@@ -35,6 +35,7 @@ Route::get('/home',function()
 {
     return view('home');
 });
+Route::get('/gallery',function(){return view('gallery');});
 
 Route::get('/stream',function(){return view('acadamic/stream');});
 Route::get('/edit',function(){return view('acadamic/class-subject-edit');});
@@ -69,6 +70,8 @@ Route::controller(pageController::class)->group(
         Route::get('/feesDetails','showFeesDetails');
         Route::get('/payment','showPayment');
         Route::get('/notification','showNotification');
+        Route::get('/attendance','showAttendance');
+        Route::get('/showattend','showattend');
     }
 );
 
@@ -90,3 +93,8 @@ Route::post('/student/payfees-submit',[PayFeesController::class,'store'])->name(
 Route::get('/student/payfees',[PayFeesController::class,'create'])->name('student.pay');
 Route::get('/student/payedfees',[MyFeesController::class,'myfees'])->name('student.myfees');
 Route::get('/student/notification',[NotificationController::class,'notification'])->name('student.notification');
+
+Route::get('/fees/pay/{id}', [StripeController::class, 'pay'])->name('fees.pay');
+Route::post('/fees/checkout', [StripeController::class, 'checkout'])->name('fees.checkout');
+Route::get('/fees/success', [StripeController::class, 'success'])->name('fees.success');
+Route::get('/fees/cancel', [StripeController::class, 'cancel'])->name('fees.cancel');

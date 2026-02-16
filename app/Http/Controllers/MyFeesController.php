@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\PayFees;
 
 class MyFeesController extends Controller
 {
-     public function myfees()
+    public function myfees()
     {
-        $name = session('student_name');
+        $studentName = session('student_name');
 
-        if (!$name) {
-            return 'Session expired. Please login again.';
+        if (!$studentName) {
+            return redirect('/loginStudent')->with('error', 'Session expired');
         }
 
-        $fees = payFees::where('name', $name)->get();
+        $fees = PayFees::where('name', 'LIKE', '%'.$studentName.'%')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
 
         return view('studentadmin.feesDetail', compact('fees'));
     }
 }
-

@@ -5,38 +5,63 @@
 @endsection
 
 @section('content')
-<div style="background-color:rgb(242, 241, 240);width:64%;height:74%;margin-left:25%;margin-top:70px;">
 
-    <h3><b>Pay Fees</b></h3>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+            <h3 class="fw-bold mb-3">Pay Fees</h3>
 
-    @if(session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
+            @if(session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
-    <form action="{{ route('student.paystore') }}" method="POST" style="margin-top:6%;">
-        @csrf
+            <div class="card shadow-sm">
+                <div class="card-body">
 
-        <div class="mb-3">
-            <label>Student Name :</label>
-            <input type="text" name="name" class="form-control" required>
+                    <form action="{{ route('student.paystore') }}" method="POST">
+                        @csrf
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Fee Name</label>
+                                <input type="text" name="name" value="{{ $feeName }}" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Amount</label>
+                                <input type="number" name="amount" value="{{ $amount }}" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Payment Mode</label>
+                            <div class="d-flex gap-5 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="mode" value="Cash" required>
+                                    <label class="form-check-label">Cash</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="mode" value="Online">
+                                    <label class="form-check-label">Online</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success px-4">
+                                Pay Offline 
+                            </button>
+
+                            <button type="submit" name="mode" value="Online" class="btn btn-primary px-4">
+                                Pay Online
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="mb-3">
-            <label>Amount :</label>
-            <input type="text" name="amount" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-            <label>Mode :</label><br>
-            <input type="radio" name="mode" value="Cash" required> Cash
-            <input type="radio" name="mode" value="Online"> Online
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
+
 @endsection

@@ -85,12 +85,21 @@
                 <a href="payment">Payment</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-25px;">
+            <button class="dropdown-btn" style="margin-top:-20px;">
                     Notifiaction
                     <span class="arrow">&lt;</span>
             </button>
             <div class="dropdown-container">
                 <a href="notification">Custom Notifiaction</a>
+            </div>
+
+            <button class="dropdown-btn" style="margin-top:-20px;">
+                Attendance
+                <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="attendance">Student Attendance</a>
+                <a href="showattend">All Attendance</a>
             </div>
         </aside>
 

@@ -20,4 +20,9 @@ class StudentAnswer extends Model
         return $this->hasMany(Mark::class);
     }
 
+    public function question()
+    {
+        return $this->belongsTo(\App\Models\Question::class, 'question_id');
+    }
+
 }

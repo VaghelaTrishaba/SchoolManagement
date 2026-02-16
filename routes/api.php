@@ -1,11 +1,10 @@
 <?php
 
 
+use App\Http\Controllers\API\AttendanceController;
 use App\Http\Controllers\API\CustomNotificationController;
 use App\Http\Controllers\API\FeesController;
 use App\Http\Controllers\API\PaymentController;
-use App\Http\Controllers\StudentDashboardController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\SectionController;
@@ -22,9 +21,7 @@ use App\Http\Controllers\API\AssginController;
 use App\Http\Controllers\API\ExamController;
 use App\Http\Controllers\API\QuestionController;
 use App\Http\Controllers\API\MarkController;
-use App\Http\Controllers\pageController;        
-
-
+        
 Route::post('signup',[AuthController::class,'signup']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
@@ -41,10 +38,12 @@ Route::apiResource('admission',AdmissionController::class);
 Route::apiResource('assginment',AssginController::class);
 Route::apiResource('exam',ExamController::class);
 Route::apiResource('question',QuestionController::class);
-Route::apiResource('mark',MarkController::class);
+Route::apiResource('mark',MarkController::class)->withoutMiddleware(['auth:sanctum']);;
 Route::apiResource('fees',FeesController::class);
 Route::apiResource('payment',PaymentController::class);
 Route::apiResource('notification',CustomNotificationController::class);
+Route::apiResource('attendance',AttendanceController::class);
+
 
 Route::post('studentlogin', [LoginStudentController::class, 'login']);
 Route::post('studentlogout', [LoginStudentController::class, 'logout']);

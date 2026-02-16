@@ -149,11 +149,11 @@
                         formData.append('class_id',class_id);
                         formData.append('teacher_id',teacher_id);
                         formData.append('subject_id',subject_id);             //add all value
-                                let r = await fetch('api/subteacher',{                //send data into server 
-                                        method :'POST',
-                                        body : formData,  //for send data
-                                        headers : {'Authorization' :`Bearer ${token}` }
-                                }).then(response => response.json()).then(data => {window.location.href="/assginsubteacher";});
+                        let r = await fetch('api/subteacher',{                //send data into server 
+                            method :'POST',
+                            body : formData,  //for send data
+                            headers : {'Authorization' :`Bearer ${token}` }
+                        }).then(response => response.json()).then(data => {window.location.href="/assginsubteacher";});
                 } 
         </script>
     </div>

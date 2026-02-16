@@ -28,7 +28,7 @@
             height: 30px;
         }
         td  img {
-            margin-left:20%;
+            margin-left:10%%;
             width : 50%;
             height : 110%;
             margin-top:-10%;
@@ -43,9 +43,5 @@
         <p style="margin-top:-10%;margin-left:8%;"><b>Total Students</b><br>15</p>
         <img src="background1.jpg" height="30%" width="30%" style="margin-left:75%;margin-top:-11%;border:2px solid white;border-radius:5px;">
         <p style="margin-top:-10%;margin-left:80%;"><b>Total Parents</b><br>25</p>
-    </div>
-
-    <div>
-    
     </div>
 @endsection

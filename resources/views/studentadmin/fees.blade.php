@@ -20,14 +20,25 @@
                     <th>No</th>  
                     <th>Fees Name</th>       
                     <th>Amount</th>
+                    <th>Pay</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($fees as $index => $fee)
+                    @php
+                        $isPaid = in_array($fee->name . '-' . $fee->amount, $paidFees);
+                    @endphp
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $fee->name }}</td>
                     <td>{{ $fee->amount }}</td>
+                    <td>
+                        @if($isPaid)
+                            <span class="btn btn-success btn-sm disabled">Payment Done</span>
+                        @else
+                            <a href="{{ route('student.pay', ['name' => $fee->name, 'amount' => $fee->amount]) }}" class="btn btn-primary btn-sm"> Pay </a>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

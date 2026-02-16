@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
-use Illuminate\Http\Request;
+
 
 class SubController extends Controller{
 public function subject($class_id = 1)

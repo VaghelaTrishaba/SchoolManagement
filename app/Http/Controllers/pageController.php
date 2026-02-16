@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers; 
-use Illuminate\Http\Request;
 
     class pageController extends Controller
     {
@@ -23,7 +22,6 @@ use Illuminate\Http\Request;
         {
             return view('gallery');
         }
-
         public function showMedium()
         {
             return view('acadamic/medium');
@@ -134,6 +132,16 @@ use Illuminate\Http\Request;
         public function showNotification()
         {
             return view('notification/customNotification');
+        }
+
+        public function showAttendance()
+        {
+            return view('attendance/studentAttendance');
+        }
+
+        public function showattend()
+        {
+            return view('attendance/showAtttend');
         }
     }
 ?>

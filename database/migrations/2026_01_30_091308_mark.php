@@ -8,13 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('marks',function (Blueprint $table){
-            $table->foreignId("student_id")->references("id")->on('student_answers')->onDelete('cascade');
-            $table->foreignId("class_id")->references("id")->on('student_answers')->onDelete('cascade');
+        Schema::create('marks', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->String("marks",50);
+            $table->unsignedBigInteger("student_id");
+            $table->unsignedBigInteger("class_id");
+            $table->String("marks");
             $table->timestamps();
-        });   
+        });
+
     }
 
     public function down(): void

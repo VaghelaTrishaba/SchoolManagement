@@ -28,4 +28,8 @@ class Admission extends Model
         return $this->hasMany(Mark::class);
     }
 
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

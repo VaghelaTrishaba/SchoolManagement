@@ -2,15 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\PayFees;
+use Illuminate\Http\Request;
 use Psy\Readline\Hoa\Console;
 
 class PayFeesController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        return view('studentadmin.payfees');
+        $studentName = session('student_name');
+
+        if (!$studentName) {
+            return redirect('/loginStudent')->with('error', 'Session expired');
+        }
+
+        $alreadyPaid = PayFees::where('name', 'LIKE', '%'.$studentName.'%')
+            ->where('name', $request->name)
+            ->where('amount', $request->amount)
+            ->exists();
+
+        return view('studentadmin.payfees', [
+            'alreadyPaid' => $alreadyPaid,
+            'student' => (object)['name' => $studentName],
+            'feeName' => $request->name,
+            'amount' => $request->amount
+        ]);
     }
 
     public function store(Request $request)
@@ -21,12 +38,26 @@ class PayFeesController extends Controller
             'mode'=> 'required',
         ]);
 
-        PayFees::create([
-            'name'  => $request->name,
-            'amount'=> $request->amount,
-            'mode' => $request->mode,
+        $exists = PayFees::where('name', 'LIKE', '%'.$request->name.'%')
+            ->where('name', $request->name)
+            ->where('amount', $request->amount)
+            ->exists();
+
+        if ($exists) {
+            return back()->with('error', 'This fee is already paid');
+        }
+
+
+        $fee = PayFees::create([
+                'name'  => $request->name,
+                'amount'=> $request->amount,
+                'mode' => $request->mode,
         ]);
 
-        return redirect()->back()->with('success', 'Payment Done!!');
+        if ($request->mode === 'Online') {
+            return redirect()->route('fees.pay', $fee->id);
+        }
+
+        return view('studentadmin.feesDetail')->with('success', 'Payment Done!!');
     }
 }
