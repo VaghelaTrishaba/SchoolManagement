@@ -72,6 +72,7 @@ Route::controller(pageController::class)->group(
         Route::get('/notification','showNotification');
         Route::get('/attendance','showAttendance');
         Route::get('/showattend','showattend');
+        Route::get('/timetable','showtimetable');
     }
 );
 

@@ -10,7 +10,7 @@ class MyAssignmentController extends Controller
 {
      public function myAssignments()
     {
-        $grNumber = session('student_gr'); // ✅ CORRECT
+        $grNumber = session('student_gr');
 
         if (!$grNumber) {
             return 'Session expired. Please login again.';

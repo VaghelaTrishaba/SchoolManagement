@@ -5,6 +5,7 @@ use App\Http\Controllers\API\AttendanceController;
 use App\Http\Controllers\API\CustomNotificationController;
 use App\Http\Controllers\API\FeesController;
 use App\Http\Controllers\API\PaymentController;
+use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\SectionController;
@@ -43,6 +44,7 @@ Route::apiResource('fees',FeesController::class);
 Route::apiResource('payment',PaymentController::class);
 Route::apiResource('notification',CustomNotificationController::class);
 Route::apiResource('attendance',AttendanceController::class);
+Route::apiResource('timetable',TimetableController::class);
 
 
 Route::post('studentlogin', [LoginStudentController::class, 'login']);

@@ -143,5 +143,10 @@ namespace App\Http\Controllers;
         {
             return view('attendance/showAtttend');
         }
+
+        public function showtimetable()
+        {
+            return view('timetable/timetable');
+        }
     }
 ?>

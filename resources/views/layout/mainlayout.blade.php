@@ -2,7 +2,6 @@
     <title>Trishaba @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <header>
         <h1>School Management System</h1>
         <nav>
@@ -30,7 +29,7 @@
                 <a href="assginsubteacher">Assign Subject Teacher</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top: -6%;">
+            <button class="dropdown-btn" style="margin-top: -10%;">
                 Teacher
                 <span class="arrow"><</span>
             </button>
@@ -39,7 +38,7 @@
                 <a href="details">Teacher Details</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-5%;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                 Student
                 <span class="arrow"><</span>
             </button>
@@ -48,7 +47,7 @@
                 <a href="studdetails">Student Details</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-5%;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                 Parents
                 <span class="arrow"><</span>
             </button>
@@ -56,7 +55,7 @@
                 <a href="parents">Parents Details</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-10px;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                 Assignment
                 <span class="arrow"><</span>
             </button>
@@ -65,7 +64,7 @@
                 <a href="allassginment">List  Of Assignment</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-15px;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                 Exam
                 <span class="arrow">&lt;</span>
             </button>
@@ -75,7 +74,7 @@
                 <a href="mark">Marks</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-20px;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                     Fees
                     <span class="arrow">&lt;</span>
             </button>
@@ -85,7 +84,7 @@
                 <a href="payment">Payment</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-20px;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                     Notifiaction
                     <span class="arrow">&lt;</span>
             </button>
@@ -93,7 +92,7 @@
                 <a href="notification">Custom Notifiaction</a>
             </div>
 
-            <button class="dropdown-btn" style="margin-top:-20px;">
+            <button class="dropdown-btn" style="margin-top:-10%;">
                 Attendance
                 <span class="arrow">&lt;</span>
             </button>
@@ -101,6 +100,14 @@
                 <a href="attendance">Student Attendance</a>
                 <a href="showattend">All Attendance</a>
             </div>
+
+            <button class="dropdown-btn" style="margin-top:-10%;">
+                Time Table
+                <span class="arrow">&lt;</span>
+            </button>
+            <div class="dropdown-container">
+                <a href="timetable">Time Table</a>
+            </div> 
         </aside>
 
         <main>
@@ -129,5 +136,3 @@
         });
     });
     </script>
-
-

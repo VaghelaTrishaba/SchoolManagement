@@ -23,7 +23,7 @@
                             headers : {'Authorization' : `Bearer ${token}`},
                             }).then(response => response.json())
                             .then(data => {
-                                    var alldata  = data.Messsage;
+                                    var alldata  = data.Message;
                                     console.log(data);
                                     const sectionData = document.querySelector("#test");
 
@@ -41,7 +41,7 @@
                                             <td><h6>${post.roll}</h6></td>
                                             <td>${post.name}</td>
                                             <td>${post.type}</td>
-                                            <td>${post.created_at.split('-').reverse().join('-')}</td>
+                                            <td>${new Date(post.created_at).toLocaleDateString('en-GB')}</td>
                                             </tr> `;
                                     });
                                     tabledata += `</table>`;
